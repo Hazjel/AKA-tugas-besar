@@ -7,25 +7,20 @@ struct Patient {
     bool isEmergency;
 };
 
-// Fungsi untuk mengurutkan array berdasarkan prioritas secara rekursif
 void sortQueueRecursively(Patient queue[], int count) {
-    if (count <= 1) return; // Base case: jika array berisi satu atau nol elemen, tidak perlu diurutkan
+    if (count <= 1) return;
 
-    // Lakukan satu pass dari Bubble Sort (rekursif)
     for (int i = 0; i < count - 1; i++) {
         if (!queue[i].isEmergency && queue[i + 1].isEmergency) {
-            // Tukar elemen
             Patient temp = queue[i];
             queue[i] = queue[i + 1];
             queue[i + 1] = temp;
         }
     }
 
-    // Rekursi untuk mengurutkan sisa array
     sortQueueRecursively(queue, count - 1);
 }
 
-// Fungsi untuk memproses antrian
 void processQueue(Patient queue[], int count) {
     for (int i = 0; i < count; i++) {
         cout << queue[i].name << endl;
@@ -437,10 +432,8 @@ int main() {
     };
     int count = 1000;
 
-    // Mengurutkan antrian berdasarkan prioritas
     sortQueueRecursively(queue, count);
 
-    // Memproses antrian
     processQueue(queue, count);
 
     return 0;

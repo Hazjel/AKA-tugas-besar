@@ -7,13 +7,10 @@ struct Patient {
     bool isEmergency;
 };
 
-// Fungsi untuk mengurutkan array berdasarkan prioritas
 void sortQueue(Patient queue[], int count) {
     for (int i = 0; i < count - 1; i++) {
         for (int j = 0; j < count - i - 1; j++) {
-            // Prioritas: pasien darurat (isEmergency = true) di depan
             if (!queue[j].isEmergency && queue[j + 1].isEmergency) {
-                // Tukar elemen
                 Patient temp = queue[j];
                 queue[j] = queue[j + 1];
                 queue[j + 1] = temp;
@@ -21,8 +18,6 @@ void sortQueue(Patient queue[], int count) {
         }
     }
 }
-
-// Fungsi untuk memproses antrian
 void processQueue(Patient queue[], int count) {
     for (int i = 0; i < count; i++) {
         cout << queue[i].name << endl;
@@ -434,11 +429,8 @@ int main() {
     };
     int count = 1000;
 
-
-    // Mengurutkan antrian berdasarkan prioritas
     sortQueue(queue, count);
 
-    // Memproses antrian
     processQueue(queue, count);
 
     return 0;
